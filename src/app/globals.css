@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b1220;
+}
+
+body {
+  background: radial-gradient(1200px 600px at 50% -10%, #14233f 0%, #0b1220 55%);
+  color: #e7eefc;
+  min-height: 100vh;
+}
