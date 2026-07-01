@@ -95,7 +95,10 @@ public class AiService {
                 "contents", List.of(Map.of("parts", List.of(Map.of("text", prompt)))),
                 "generationConfig", Map.of(
                         "responseMimeType", "application/json",
-                        "temperature", 0.4));
+                        "temperature", 0.4,
+                        // This is a simple pick-and-explain task; disabling the model's
+                        // "thinking" budget cuts latency from ~17s to a few seconds.
+                        "thinkingConfig", Map.of("thinkingBudget", 0)));
 
         String raw = restClient.post()
                 .uri("/models/{model}:generateContent?key={key}", model, apiKey)
