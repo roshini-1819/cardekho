@@ -21,3 +21,6 @@ data/
 .idea/
 .vscode/
 *.iml
+
+# Claude Code local config
+.claude/

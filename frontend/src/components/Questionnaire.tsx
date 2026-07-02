@@ -71,16 +71,16 @@ export default function Questionnaire({
         e.preventDefault();
         onSubmit(prefs);
       }}
-      className="space-y-7 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8"
+      className="space-y-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:p-10"
     >
       <div>
-        <label className="mb-2 block text-sm font-semibold text-slate-200">
+        <label className="mb-3 block text-sm font-semibold text-slate-200">
           Budget:{" "}
           <span className="text-brand">
             ₹{prefs.budgetMinLakh}L – ₹{prefs.budgetMaxLakh}L
           </span>
         </label>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <span className="text-xs text-slate-400">Min</span>
             <input
@@ -116,54 +116,56 @@ export default function Questionnaire({
         </div>
       </div>
 
-      <div>
-        <label className="mb-2 block text-sm font-semibold text-slate-200">
-          Body type <span className="font-normal text-slate-400">(optional)</span>
-        </label>
-        <div className="flex flex-wrap gap-2">
-          {BODY_TYPES.map((b) => (
-            <Chip
-              key={b}
-              active={prefs.bodyTypes.includes(b)}
-              onClick={() => setPrefs((p) => ({ ...p, bodyTypes: toggle(p.bodyTypes, b) }))}
-            >
-              {bodyLabel[b]}
-            </Chip>
-          ))}
+      <div className="grid gap-6 sm:grid-cols-3">
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-200">
+            Body type <span className="font-normal text-slate-400">(optional)</span>
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {BODY_TYPES.map((b) => (
+              <Chip
+                key={b}
+                active={prefs.bodyTypes.includes(b)}
+                onClick={() => setPrefs((p) => ({ ...p, bodyTypes: toggle(p.bodyTypes, b) }))}
+              >
+                {bodyLabel[b]}
+              </Chip>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div>
-        <label className="mb-2 block text-sm font-semibold text-slate-200">
-          Fuel <span className="font-normal text-slate-400">(optional)</span>
-        </label>
-        <div className="flex flex-wrap gap-2">
-          {FUEL_TYPES.map((f) => (
-            <Chip
-              key={f}
-              active={prefs.fuelTypes.includes(f)}
-              onClick={() => setPrefs((p) => ({ ...p, fuelTypes: toggle(p.fuelTypes, f) }))}
-            >
-              {fuelLabel[f]}
-            </Chip>
-          ))}
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-200">
+            Fuel <span className="font-normal text-slate-400">(optional)</span>
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {FUEL_TYPES.map((f) => (
+              <Chip
+                key={f}
+                active={prefs.fuelTypes.includes(f)}
+                onClick={() => setPrefs((p) => ({ ...p, fuelTypes: toggle(p.fuelTypes, f) }))}
+              >
+                {fuelLabel[f]}
+              </Chip>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div>
-        <label className="mb-2 block text-sm font-semibold text-slate-200">
-          Minimum seats
-        </label>
-        <div className="flex gap-2">
-          {[4, 5, 7].map((s) => (
-            <Chip
-              key={s}
-              active={prefs.minSeating === s}
-              onClick={() => setPrefs((p) => ({ ...p, minSeating: s }))}
-            >
-              {s}+ seats
-            </Chip>
-          ))}
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-200">
+            Minimum seats
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {[4, 5, 7].map((s) => (
+              <Chip
+                key={s}
+                active={prefs.minSeating === s}
+                onClick={() => setPrefs((p) => ({ ...p, minSeating: s }))}
+              >
+                {s}+ seats
+              </Chip>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -171,7 +173,7 @@ export default function Questionnaire({
         <label className="mb-3 block text-sm font-semibold text-slate-200">
           What matters most to you?
         </label>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {PRIORITY_FIELDS.map((f) => (
             <div key={f.key} className="rounded-xl border border-white/10 bg-black/20 p-3">
               <div className="flex items-baseline justify-between">

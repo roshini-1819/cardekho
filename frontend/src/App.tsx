@@ -80,12 +80,12 @@ export default function App() {
   }
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10 sm:py-14">
-      <header className="mb-8 text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <main className="min-h-screen w-full px-6 py-10 sm:px-10 sm:py-14 lg:px-16 xl:px-24 2xl:px-32">
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
           Car<span className="text-brand">Match</span>
         </h1>
-        <p className="mx-auto mt-2 max-w-xl text-slate-300">
+        <p className="mx-auto mt-3 max-w-2xl text-slate-300">
           Too many cars, no clear answer? Tell us what matters and get a ranked,{" "}
           <span className="text-white">explained</span> shortlist — with an AI second opinion.
         </p>
@@ -127,7 +127,7 @@ export default function App() {
                 />
               </div>
 
-              <div className="space-y-4">
+              <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
                 {results.map((r, i) => (
                   <ResultCard
                     key={r.car.id}
