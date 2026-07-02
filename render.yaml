@@ -1,5 +1,11 @@
-# Render blueprint for the Spring Boot backend.
+# Render blueprint for the Spring Boot backend + its Postgres database.
 # The frontend deploys separately on Vercel (see README).
+databases:
+  - name: carmatch-db
+    databaseName: carmatch
+    user: carmatch
+    plan: free
+
 services:
   - type: web
     name: carmatch-backend
@@ -9,6 +15,26 @@ services:
     plan: free
     healthCheckPath: /api/ai/status
     envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: carmatch-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: carmatch-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: carmatch-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: carmatch-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: carmatch-db
+          property: password
       - key: GEMINI_API_KEY
         sync: false # set this in the Render dashboard
       - key: CORS_ORIGINS
